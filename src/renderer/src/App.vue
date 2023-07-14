@@ -43,7 +43,6 @@ export default {
       judge_total: 0,
     }
   },
-
   // メソッドの中身は、状態を変化させ、更新をトリガーさせる関数です。
   // 各メソッドは、テンプレート内のイベントハンドラーにバインドすることができます。
   methods: {
@@ -81,6 +80,11 @@ export default {
       }
       this.judge_total = this.judge_1 * this.judge_2 * this.judge_3 * this.judge_4;
     }
+  },
+  created() {
+    let up = new Audio();
+    up.src = "assets/up.wav";
+    up.play();
   },
 
   // ライフサイクルフックは、コンポーネントのライフサイクルの
