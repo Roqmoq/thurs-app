@@ -34,11 +34,15 @@
         </p>
       </div>
     </div><br>
-    <div v-if="score_open" class="row d-flex total_score align-items-center">
-      <div class="circle col align-items-center">
-        <p class="align-middle text-center" id="total">
+    <div v-if="score_open" class="row total_score align-items-center">
+      <div class="parent">
+        <a class="text-center circle" v-bind:style="{
+          height: judge_total * 4 + 300 + 'px',
+          width: judge_total * 4 + 300 + 'px',
+          lineHeight: judge_total * 4 + 300 + 'px',
+          fontSize: judge_total * 3 + 200 + 'px' }">
           {{ judge_total }}
-        </p>
+        </a>
       </div>
     </div>
   </div>
@@ -155,21 +159,22 @@ export default {
   font-size: 50px;
 }
 
-#total {
-  font-size: 300px;
-  font-style: italic;
-  font-weight: 700;
-  color: red;
-}
-
 .judge-score {
   font-style: italic;
 }
 
+.parent {
+  text-align: center;
+}
+
 .circle{
-  background-color: yellow;
-  width: 600px !important;
-  height: 600px;
+  display: inline-block;
   border-radius: 50%;
+  background: yellow;
+  color: red;
+  text-align:center;
+  font-style: italic;
+  font-weight: 700;
+  text-decoration:none;
 }
 </style>
