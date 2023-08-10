@@ -3,7 +3,7 @@
 An Electron application with Vue and TypeScript
 
 electron-viteで作成する
-[参考](https://developer.mamezou-tech.com/blogs/2023/05/22/electron-vite/)  
+[参考](https://developer.mamezou-tech.com/blogs/2023/05/22/electron-vite/)
 
 ## Recommended IDE Setup
 
@@ -36,3 +36,9 @@ $ npm run build:mac
 $ npm run build:linux
 ```
 # tamade2
+
+## todo (23/08/10作成)
+　　
+- [ ] 計算不当原因調査
+- [ ] 300テスト
+- [ ] 工証
