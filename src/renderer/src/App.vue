@@ -74,7 +74,7 @@ export default {
   // メソッドの中身は、状態を変化させ、更新をトリガーさせる関数です。
   // 各メソッドは、テンプレート内のイベントハンドラーにバインドすることができます。
   methods: {
-    onKeyDown: function(e) {
+    onKeyDown: async function(e) {
       let key = e.key;
       if (key === "1" && this.judge_1 === 0) {
         this.judge_1 = 1;
@@ -112,13 +112,16 @@ export default {
       }
       if (this.judge_total === 0 && this.judge_1 * this.judge_2 * this.judge_3 * this.judge_4 > 0) {
         this.sum = this.judge_1 * this.judge_2 * this.judge_3 * this.judge_4
-        this.stepUpTotal(this.sum);
+        await this.stepUpTotal(this.sum);
       }
     },
     stepUpTotal: async function(num) {
       const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
       const interval = async (ms, maxCount) => {
         while (this.judge_total < maxCount) {
+          if (!this.score_open) {
+            break
+          }
           await new Promise(resolve => setTimeout(resolve, ms));
           if (this.judge_total !== maxCount) {
             this.judge_total++
@@ -129,7 +132,7 @@ export default {
       }
       this.score_open = true;
       await sleep(500);
-      let intervalTime = num > 36 ? 1400 / num : 700 / num;
+      let intervalTime = 1400 / num;
       await interval(intervalTime, num)
       await sleep(700);
       if (num === 81) {
