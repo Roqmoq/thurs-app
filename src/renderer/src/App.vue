@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div :key="countKey" class="container">
     <div class="row">
       <div class="col-3">
         <p v-if="judge_1 === 0" class="text-center sub-score judge-score">
@@ -69,6 +69,7 @@ export default {
       up: new Audio(up),
       decision1: new Audio(decision1),
       decision2: new Audio(decision2),
+      countKey: 0
     }
   },
   // メソッドの中身は、状態を変化させ、更新をトリガーさせる関数です。
@@ -109,6 +110,7 @@ export default {
         this.sum = 0;
         this.score_open = false
         this.result_flg = false
+        this.countKey++
       }
       if (this.judge_total === 0 && this.judge_1 * this.judge_2 * this.judge_3 * this.judge_4 > 0) {
         this.sum = this.judge_1 * this.judge_2 * this.judge_3 * this.judge_4
@@ -132,7 +134,7 @@ export default {
       }
       this.score_open = true;
       await sleep(500);
-      let intervalTime = 1400 / num;
+      let intervalTime = 1200 / num;
       await interval(intervalTime, num)
       await sleep(700);
       if (num === 81) {
