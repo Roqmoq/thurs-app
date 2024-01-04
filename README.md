@@ -1,4 +1,4 @@
-# tamade2
+# thurs-app
 
 An Electron application with Vue and TypeScript
 
