@@ -1,5 +1,5 @@
 <template>
-  <div class="container w-100">
+  <div v-if="main_flg" class="container w-100">
     <div class="row subscore-row d-flex align-items-center">
       <div class="col-1"></div>
       <div class="col-2">
@@ -47,6 +47,9 @@
       </div>
     </div>
   </div>
+  <div v-if="config_flg" class="container w-100">
+    <button type="button">test</button>
+  </div>
 </template>
 
 <script>
@@ -64,7 +67,9 @@ export default {
       sum: 0,
       score_open: false,
       result_flg: false,
-      is_plus: false
+      is_plus: false,
+      main_flg: true,
+      config_flg: false
     }
   },
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
