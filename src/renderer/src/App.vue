@@ -1,6 +1,7 @@
 <template>
-  <div class="container">
-    <div class="row">
+  <div class="container w-100">
+    <div class="row subscore-row d-flex align-items-center">
+      <div class="col-1"></div>
       <div class="col-2">
         <p v-if="judge_1 === 99" class="text-center sub-score judge-score">--</p>
         <p v-else class="text-center sub-score judge-score">
@@ -31,10 +32,15 @@
           {{ judge_5 }}
         </p>
       </div>
+      <div class="col-1"></div>
     </div>
     <br />
-    <div v-if="score_open" class="row total_score align-items-center">
-      <div class="parent">
+    <div
+      v-if="score_open"
+      class="d-flex align-items-center row d-flex total_score align-items-center"
+    >
+      <div class="total">
+        <a v-if="is_plus" class="plus">×10</a>
         <a class="text-center circle">
           {{ judge_total }}
         </a>
@@ -57,12 +63,24 @@ export default {
       judge_total: 0,
       sum: 0,
       score_open: false,
-      result_flg: false
+      result_flg: false,
+      is_plus: false
     }
+  },
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  mounted() {
+    // イベントリスナーの登録
+    document.addEventListener('keydown', this.onKeyDown)
+  },
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  beforeUnmount() {
+    // イベントリスナーの削除
+    document.removeEventListener('keydown', this.onKeyDown)
   },
   // メソッドの中身は、状態を変化させ、更新をトリガーさせる関数です。
   // 各メソッドは、テンプレート内のイベントハンドラーにバインドすることができます。
   methods: {
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     onKeyDown: function (e) {
       const key = e.key
       if (key === '1' && this.judge_1 === 99) {
@@ -105,6 +123,7 @@ export default {
         this.sum = 0
         this.score_open = false
         this.result_flg = false
+        this.is_plus = false
       }
       if (
         this.judge_total === 0 &&
@@ -116,6 +135,7 @@ export default {
       ) {
         this.sum = this.judge_1 + this.judge_2 + this.judge_3 + this.judge_4 + this.judge_5
         if (this.sum > 4) {
+          this.is_plus = true
           this.judge_total = this.sum * 10
         } else {
           this.judge_total = this.sum
@@ -128,30 +148,53 @@ export default {
 </script>
 
 <style lang="less">
-.total_score {
-  height: 300px;
-}
-
 .sub-score {
   font-size: 50px;
 }
 
-.judge-score {
-  font-style: italic;
-}
-
-.parent {
+.total {
   text-align: center;
 }
 
 .circle {
-  display: inline-block;
-  border-radius: 50%;
-  background: yellow;
-  color: #ff5900;
+  color: #eb455f;
   text-align: center;
-  font-style: italic;
   font-weight: 700;
   text-decoration: none;
+  font-size: 200px;
+}
+
+#app {
+  height: 100vh;
+}
+
+.container {
+  height: 100vh;
+}
+
+.test {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  height: 100%;
+}
+
+.sub-score {
+  color: #bad7e9;
+}
+
+.container {
+  background-color: #2b3467;
+}
+
+.subscore-row {
+  height: 200px;
+}
+
+.plus {
+  color: #fcffe7;
 }
 </style>
