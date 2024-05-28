@@ -4,7 +4,7 @@
       <div class="col-1"></div>
       <div class="col-2">
         <p v-if="judge_1 === 99" class="text-center sub-score judge-score">--</p>
-        <p v-else class="text-center sub-score judge-score">
+        <p v-else class="text-center sub-score judge-score" >
           {{ judge_1 }}
         </p>
       </div>
@@ -40,8 +40,7 @@
       class="d-flex align-items-center row d-flex total_score align-items-center"
     >
       <div class="total">
-        <a v-if="is_plus" class="plus">×10</a>
-        <a class="text-center circle">
+        <a class="text-center circle" :style="{ color : [ is_plus ? 'red' : 'white' ]}">
           {{ judge_total }}
         </a>
       </div>
@@ -68,6 +67,7 @@ export default {
       score_open: false,
       result_flg: false,
       is_plus: false,
+      is_blind: false,
       main_flg: true,
       config_flg: false
     }
@@ -162,7 +162,7 @@ export default {
 }
 
 .circle {
-  color: #eb455f;
+  //color: #ff0000;
   text-align: center;
   font-weight: 700;
   text-decoration: none;
