@@ -1,9 +1,22 @@
-# tamade2
+# thurs-app
 
 An Electron application with Vue and TypeScript
 
 electron-viteで作成する
 [参考](https://developer.mamezou-tech.com/blogs/2023/05/22/electron-vite/)
+
+
+## TODO
+
+- [ ] 誰が何点を入れたかを見えなくするモード
+- [ ] 設定ページ作成
+- [ ] 設定ページ・倍数変更
+- [ ] 設定ページ・点数と倍数変更
+- [ ] お題設定ページ
+- [ ] お題設置・表示
+- [ ] デザイン変更 (背景は黒、文字は白、ボーナスの倍率が掛かった点数は黄色)
+- [ ] 倍数表示を✖️から文字色に変更
+- [ ] 効果音
 
 ## Recommended IDE Setup
 
