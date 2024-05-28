@@ -188,11 +188,11 @@ body {
 }
 
 .sub-score {
-  color: #bad7e9;
+  color: #ffffff;
 }
 
 .container {
-  background-color: #2b3467;
+  background-color: #000000;
 }
 
 .subscore-row {
@@ -200,6 +200,6 @@ body {
 }
 
 .plus {
-  color: #fcffe7;
+  color: #ffffff;
 }
 </style>
