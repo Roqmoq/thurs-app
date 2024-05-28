@@ -129,6 +129,9 @@ export default {
         this.score_open = false
         this.result_flg = false
         this.is_plus = false
+      } else if (key === 'Escape') {
+        this.main_flg = !this.main_flg
+        this.config_flg = !this.config_flg
       }
       if (
         this.judge_total === 0 &&
