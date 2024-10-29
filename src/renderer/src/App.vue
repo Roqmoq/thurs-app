@@ -8,7 +8,7 @@
       class="d-flex align-items-center row d-flex total_score align-items-center"
     >
       <div class="total">
-        <a class="text-center circle" :style="{ color: [is_plus ? 'red' : 'white'] }">
+        <a class="text-center circle" :class="scoreClass">
           {{ judge_total }}
         </a>
       </div>
@@ -16,7 +16,7 @@
   </div>
   <div v-if="config_flg && !odaiset_flg" class="container w-100" style="background: gray">
     <h1 style="color: white">設定ページ</h1>
-    <h3 style="color: skyblue; margin-top: 10px">各審査員の得点</h3>
+    <!-- <h3 style="color: skyblue; margin-top: 10px">各審査員の得点</h3>
     <div>
       <input
         id="visible"
@@ -31,7 +31,7 @@
     <div>
       <input id="hide" v-model="button_visible" type="radio" name="button_color" value="hide" />
       <label for="hide" style="color: white">隠す</label>
-    </div>
+    </div> -->
     <!--    <h3 style="color: skyblue; margin-top: 10px">ボーナス基準となる点数(デフォルト5)</h3>-->
     <!--    <input type="number" id="baseScore" name="baseScore" v-model="baseScore"/>-->
     <!--    <h3 style="color: skyblue; margin-top: 10px">ボーナス時の倍率(デフォルト10)</h3>-->
@@ -45,100 +45,133 @@
       </tr>
       <tr>
         <th>0</th>
-        <th><input  type="number" style="width: 50px" name="point[]" /></th>
-        <th><input  type="checkbox" name="effect[]" /></th>
+        <th><input v-model="point[0]" type="number" style="width: 50px" name="point[]" /></th>
+        <th>
+          <select v-model="effect[0]">
+            <option>small</option>
+            <option>medium</option>
+            <option>large</option>
+          </select>
+        </th>
       </tr>
       <tr>
         <th>1</th>
         <th><input v-model="point[1]" type="number" style="width: 50px" name="point[]" /></th>
-        <th><input v-model="effect[1]" type="checkbox" name="effect[]" /></th>
+        <th>
+          <select v-model="effect[1]">
+            <option>small</option>
+            <option>medium</option>
+            <option>large</option>
+          </select>
+        </th>
       </tr>
       <tr>
         <th>2</th>
-        <th><input  type="number" style="width: 50px" name="point[]" /></th>
-        <th><input  type="checkbox" name="effect[]" /></th>
+        <th><input v-model="point[2]" type="number" style="width: 50px" name="point[]" /></th>
+        <th>
+          <select v-model="effect[2]">
+            <option>small</option>
+            <option>medium</option>
+            <option>large</option>
+          </select>
+        </th>
       </tr>
       <tr>
         <th>3</th>
-        <th><input  type="number" style="width: 50px" name="point[]" /></th>
-        <th><input  type="checkbox" name="effect[]" /></th>
+        <th><input v-model="point[3]" type="number" style="width: 50px" name="point[]" /></th>
+        <th>
+          <select v-model="effect[3]">
+            <option>small</option>
+            <option>medium</option>
+            <option>large</option>
+          </select>
+        </th>
       </tr>
       <tr>
         <th>4</th>
-        <th><input  type="number" style="width: 50px" name="point[]" /></th>
-        <th><input  type="checkbox" name="effect[]" /></th>
+        <th><input v-model="point[4]" type="number" style="width: 50px" name="point[]" /></th>
+        <th>
+          <select v-model="effect[4]">
+            <option>small</option>
+            <option>medium</option>
+            <option>large</option>
+          </select>
+        </th>
       </tr>
       <tr>
         <th>5</th>
-        <th><input  type="number" style="width: 50px" name="point[]" /></th>
-        <th><input  type="checkbox" name="effect[]" /></th>
+        <th><input v-model="point[5]" type="number" style="width: 50px" name="point[]" /></th>
+        <th>
+          <select v-model="effect[5]">
+            <option>small</option>
+            <option>medium</option>
+            <option>large</option>
+          </select>
+        </th>
       </tr>
       <tr>
         <th>6</th>
-        <th><input  type="number" style="width: 50px" name="point[]" /></th>
-        <th><input  type="checkbox" name="effect[]" /></th>
+        <th><input v-model="point[6]" type="number" style="width: 50px" name="point[]" /></th>
+        <th>
+          <select v-model="effect[6]">
+            <option>small</option>
+            <option>medium</option>
+            <option>large</option>
+          </select>
+        </th>
       </tr>
       <tr>
         <th>7</th>
-        <th><input  type="number" style="width: 50px" name="point[]" /></th>
-        <th><input  type="checkbox" name="effect[]" /></th>
+        <th><input v-model="point[7]" type="number" style="width: 50px" name="point[]" /></th>
+        <th>
+          <select v-model="effect[7]">
+            <option>small</option>
+            <option>medium</option>
+            <option>large</option>
+          </select>
+        </th>
       </tr>
       <tr>
         <th>8</th>
-        <th><input  type="number" style="width: 50px" name="point[]" /></th>
-        <th><input  type="checkbox" name="effect[]" /></th>
+        <th><input v-model="point[8]" type="number" style="width: 50px" name="point[]" /></th>
+        <th>
+          <select v-model="effect[8]">
+            <option>small</option>
+            <option>medium</option>
+            <option>large</option>
+          </select>
+        </th>
       </tr>
       <tr>
         <th>9</th>
-        <th><input  type="number" style="width: 50px" name="point[]" /></th>
-        <th><input  type="checkbox" name="effect[]" /></th>
+        <th><input v-model="point[9]" type="number" style="width: 50px" name="point[]" /></th>
+        <th>
+          <select v-model="effect[9]">
+            <option>small</option>
+            <option>medium</option>
+            <option>large</option>
+          </select>
+        </th>
       </tr>
       <tr>
         <th>10</th>
-        <th><input  type="number" style="width: 50px" name="point[]" /></th>
-        <th><input  type="checkbox" name="effect[]" /></th>
+        <th><input v-model="point[10]" type="number" style="width: 50px" name="point[]" /></th>
+        <th>
+          <select v-model="effect[10]">
+            <option>small</option>
+            <option>medium</option>
+            <option>large</option>
+          </select>
+        </th>
       </tr>
     </table>
-    <input id="bonus" type="button" name="bonus" value="お題セット" @click="odaiset()" />
-  </div>
-  <div v-if="config_flg && odaiset_flg" class="container w-100">
-    <h1 style="color: white">設定ページ > お題入力ページ</h1>
-    <input id="bonus" v-model="odai" type="text" name="bonus" />
-    <input id="bonus" type="button" name="bonus" value="登録する" @click="register()" />
-    <h3 style="color: skyblue; margin-top: 5px">現状のお題一覧</h3>
-    <li v-for="(item, index) in odais">
-      <a style="color: #9feaf9; font-size: 12px">{{ item }}</a
-      ><input :key="index" type="button" value="このお題を消す" @click="deleteit(index)" />
-    </li>
-    <h3 style="color: skyblue; margin-top: 20px"></h3>
-    <input
-      id="bonus"
-      type="button"
-      name="bonus"
-      style="color: red"
-      value="お題を全て消す"
-      @click="resetAll()"
-    />
-    <input id="bonus" type="button" name="bonus" value="通常設定に戻る" @click="odaiset()" />
-  </div>
-  <div v-if="shutsudai_flg" class="container w-100 pre">
-    <div class="hount">
-      <h2 v-if="odai_vis" style="color: white">{{ odai }}</h2>
-      <input
-        id="bonus"
-        style="margin-top: 10px"
-        type="button"
-        name="bonus"
-        value="出題"
-        @click="shutsudai()"
-      />
-    </div>
   </div>
 </template>
 
 <script>
-import decision1 from './assets/click.mp3'
-import decision2 from './assets/bonus.mp3'
+import smallSe from './assets/small_sound.mp3'
+import mediumSe from './assets/medium_sound.mp3'
+import largeSe from './assets/large_sound.mp3'
 export default {
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   data() {
@@ -160,16 +193,30 @@ export default {
       shutsudai_flg: false,
       baseScore: 5,
       point: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      effect: [false, false, false, false, false, false, false, false, false, false, false],
+      effect: [
+        'small',
+        'small',
+        'small',
+        'small',
+        'small',
+        'small',
+        'small',
+        'small',
+        'small',
+        'small',
+        'small'
+      ],
       bonus: 10,
       button_visible: 'visible',
-      decision1: new Audio(decision1),
-      decision2: new Audio(decision2),
+      smallSe: new Audio(smallSe),
+      mediumSe: new Audio(mediumSe),
+      largeSe: new Audio(largeSe),
       odaiset_flg: false,
       odais: [],
       odai: '',
       odai_vis: false,
-      odai_count: -1
+      odai_count: -1,
+      scoreClass: 'small'
     }
   },
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -253,39 +300,27 @@ export default {
         const effectArr = this.effect.map((item) => {
           return item.valueOf()
         })
+        console.log(pointArr)
+        console.log(effectArr)
         this.judge_total = pointArr[this.sum]
-        if (effectArr[this.sum]) {
-          this.is_plus = true
-          this.decision2.currentTime = 0
-          this.decision2.play()
+        console.log(this.sum)
+        console.log(this.judge_total)
+        console.log(effectArr[this.sum])
+        if (effectArr[this.sum] === 'small') {
+          this.scoreClass = 'smallScore'
+          this.smallSe.currentTime = 0
+          this.smallSe.play()
+        } else if (effectArr[this.sum] === 'medium') {
+          this.scoreClass = 'mediumScore'
+          this.mediumSe.currentTime = 0
+          this.mediumSe.play()
         } else {
-          this.decision1.currentTime = 0
-          this.decision1.play()
+          this.scoreClass = 'largeScore'
+          this.largeSe.currentTime = 0
+          this.largeSe.play()
         }
         this.score_open = true
       }
-    },
-    odaiset: function () {
-      this.odaiset_flg = !this.odaiset_flg
-    },
-    deleteit(index) {
-      this.odais.splice(index, 1)
-    },
-    resetAll: function () {
-      this.odais = []
-    },
-    register: function () {
-      if (this.odai.length > 0) {
-        this.odais.push(this.odai)
-      }
-    },
-    shutsudai: function () {
-      this.odai_vis = true
-      this.odai_count++
-      if (this.odai_count > this.odais.length) {
-        this.odai_count = 0
-      }
-      this.odai = this.odais[this.odai_count]
     }
   }
 }
@@ -368,6 +403,18 @@ body {
   white-space: pre-wrap;
   font-family: 'Menlo', 'Lucida Console', monospace;
   font: bold;
+}
+
+.smallScore {
+  color: white;
+}
+
+.mediumScore {
+  color: yellow;
+}
+
+.largeScore {
+  color: red;
 }
 
 @media (min-width: 576px) {
