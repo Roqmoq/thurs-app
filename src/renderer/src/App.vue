@@ -45,7 +45,7 @@
       </tr>
       <tr>
         <th>0</th>
-        <th><input v-model="point[0]" type="number" style="width: 50px" name="point[]" /></th>
+        <th><input v-model="point[0]" type="number" style="width: 100px" name="point[]" /></th>
         <th>
           <select v-model="effect[0]">
             <option>small</option>
@@ -56,7 +56,7 @@
       </tr>
       <tr>
         <th>1</th>
-        <th><input v-model="point[1]" type="number" style="width: 50px" name="point[]" /></th>
+        <th><input v-model="point[1]" type="number" style="width: 100px" name="point[]" /></th>
         <th>
           <select v-model="effect[1]">
             <option>small</option>
@@ -67,7 +67,7 @@
       </tr>
       <tr>
         <th>2</th>
-        <th><input v-model="point[2]" type="number" style="width: 50px" name="point[]" /></th>
+        <th><input v-model="point[2]" type="number" style="width: 100px" name="point[]" /></th>
         <th>
           <select v-model="effect[2]">
             <option>small</option>
@@ -78,7 +78,7 @@
       </tr>
       <tr>
         <th>3</th>
-        <th><input v-model="point[3]" type="number" style="width: 50px" name="point[]" /></th>
+        <th><input v-model="point[3]" type="number" style="width: 100px" name="point[]" /></th>
         <th>
           <select v-model="effect[3]">
             <option>small</option>
@@ -89,7 +89,7 @@
       </tr>
       <tr>
         <th>4</th>
-        <th><input v-model="point[4]" type="number" style="width: 50px" name="point[]" /></th>
+        <th><input v-model="point[4]" type="number" style="width: 100px" name="point[]" /></th>
         <th>
           <select v-model="effect[4]">
             <option>small</option>
@@ -100,7 +100,7 @@
       </tr>
       <tr>
         <th>5</th>
-        <th><input v-model="point[5]" type="number" style="width: 50px" name="point[]" /></th>
+        <th><input v-model="point[5]" type="number" style="width: 100px" name="point[]" /></th>
         <th>
           <select v-model="effect[5]">
             <option>small</option>
@@ -111,7 +111,7 @@
       </tr>
       <tr>
         <th>6</th>
-        <th><input v-model="point[6]" type="number" style="width: 50px" name="point[]" /></th>
+        <th><input v-model="point[6]" type="number" style="width: 100px" name="point[]" /></th>
         <th>
           <select v-model="effect[6]">
             <option>small</option>
@@ -122,7 +122,7 @@
       </tr>
       <tr>
         <th>7</th>
-        <th><input v-model="point[7]" type="number" style="width: 50px" name="point[]" /></th>
+        <th><input v-model="point[7]" type="number" style="width: 100px" name="point[]" /></th>
         <th>
           <select v-model="effect[7]">
             <option>small</option>
@@ -133,7 +133,7 @@
       </tr>
       <tr>
         <th>8</th>
-        <th><input v-model="point[8]" type="number" style="width: 50px" name="point[]" /></th>
+        <th><input v-model="point[8]" type="number" style="width: 100px" name="point[]" /></th>
         <th>
           <select v-model="effect[8]">
             <option>small</option>
@@ -144,7 +144,7 @@
       </tr>
       <tr>
         <th>9</th>
-        <th><input v-model="point[9]" type="number" style="width: 50px" name="point[]" /></th>
+        <th><input v-model="point[9]" type="number" style="width: 100px" name="point[]" /></th>
         <th>
           <select v-model="effect[9]">
             <option>small</option>
@@ -155,7 +155,7 @@
       </tr>
       <tr>
         <th>10</th>
-        <th><input v-model="point[10]" type="number" style="width: 50px" name="point[]" /></th>
+        <th><input v-model="point[10]" type="number" style="width: 100px" name="point[]" /></th>
         <th>
           <select v-model="effect[10]">
             <option>small</option>
@@ -235,35 +235,35 @@ export default {
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     onKeyDown: function (e) {
       const key = e.key
-      if (key === '1' && this.judge_1 === 99) {
+      if (key === '2' && this.judge_1 === 99) {
         this.judge_1 = 1
-      } else if (key === '2' && this.judge_1 === 99) {
+      } else if (key === '3' && this.judge_1 === 99) {
         this.judge_1 = 2
-      } else if (key === '0' && this.judge_1 === 99) {
+      } else if (key === '1' && this.judge_1 === 99) {
         this.judge_1 = 0
-      } else if (key === '3' && this.judge_2 === 99) {
-        this.judge_2 = 0
       } else if (key === '4' && this.judge_2 === 99) {
-        this.judge_2 = 1
+        this.judge_2 = 0
       } else if (key === '5' && this.judge_2 === 99) {
+        this.judge_2 = 1
+      } else if (key === '6' && this.judge_2 === 99) {
         this.judge_2 = 2
-      } else if (key === '6' && this.judge_3 === 99) {
-        this.judge_3 = 0
       } else if (key === '7' && this.judge_3 === 99) {
-        this.judge_3 = 1
+        this.judge_3 = 0
       } else if (key === '8' && this.judge_3 === 99) {
+        this.judge_3 = 1
+      } else if (key === '9' && this.judge_3 === 99) {
         this.judge_3 = 2
-      } else if (key === '9' && this.judge_4 === 99) {
-        this.judge_4 = 0
       } else if (key === 'q' && this.judge_4 === 99) {
-        this.judge_4 = 1
+        this.judge_4 = 0
       } else if (key === 'w' && this.judge_4 === 99) {
+        this.judge_4 = 1
+      } else if (key === 'e' && this.judge_4 === 99) {
         this.judge_4 = 2
-      } else if (key === 'e' && this.judge_5 === 99) {
-        this.judge_5 = 0
       } else if (key === 'r' && this.judge_5 === 99) {
-        this.judge_5 = 1
+        this.judge_5 = 0
       } else if (key === 't' && this.judge_5 === 99) {
+        this.judge_5 = 1
+      } else if (key === 'y' && this.judge_5 === 99) {
         this.judge_5 = 2
       } else if (key === 'Enter') {
         this.judge_1 = 99
@@ -279,9 +279,6 @@ export default {
       } else if (key === 'Escape') {
         this.main_flg = !this.main_flg
         this.config_flg = !this.config_flg
-      } else if (key === 'Shift') {
-        this.main_flg = !this.main_flg
-        this.shutsudai_flg = !this.shutsudai_flg
       } else if (key === 'ArrowDown') {
         this.shutsudai()
       }
