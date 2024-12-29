@@ -1,8 +1,8 @@
 <template>
   <div v-if="main_flg" class="container w-100">
-    <div class="row subscore-row d-flex align-items-center odai-field">
+    <!-- <div class="row subscore-row d-flex align-items-center odai-field">
       <p v-if="odai_vis" id="odai" style="color: white">{{ odai }}</p>
-    </div>
+    </div> -->
     <div
       v-if="score_open"
       class="d-flex align-items-center row d-flex total_score align-items-center"
@@ -165,6 +165,13 @@
         </th>
       </tr>
     </table>
+    <div style="margin-top: 10px">
+      <span>通常モード</span>
+      <input v-model="mode" type="radio" name="normal" value="normal" />
+      <br />
+      <span>MinMax削除モード</span>
+      <input v-model="mode" type="radio" name="strict" value="strict" />
+    </div>
   </div>
 </template>
 
@@ -216,7 +223,8 @@ export default {
       odai: '',
       odai_vis: false,
       odai_count: -1,
-      scoreClass: 'small'
+      scoreClass: 'small',
+      mode: 'normal'
     }
   },
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -290,19 +298,32 @@ export default {
         this.judge_4 !== 99 &&
         this.judge_5 !== 99
       ) {
-        this.sum = this.judge_1 + this.judge_2 + this.judge_3 + this.judge_4 + this.judge_5
+        if (this.mode == "normal"){
+          this.sum = this.judge_1 + this.judge_2 + this.judge_3 + this.judge_4 + this.judge_5
+        } else {
+          const sumArray = [this.judge_1, this.judge_2, this.judge_3, this.judge_4, this.judge_5]
+          sumArray.sort((a, b) => {
+            return a - b
+          })
+          sumArray.pop()
+          sumArray.shift()
+          this.sum = sumArray.reduce(function (sum, element) {
+            return sum + element
+          }, 0)
+        }
         const pointArr = Object.values(this.point).map((value) => {
           return value
         })
         const effectArr = this.effect.map((item) => {
           return item.valueOf()
         })
-        console.log(pointArr)
-        console.log(effectArr)
-        this.judge_total = pointArr[this.sum]
+        console.log(this.judge_1)
+        console.log(this.judge_2)
+        console.log(this.judge_3)
+        console.log(this.judge_4)
+        console.log(this.judge_5)
         console.log(this.sum)
-        console.log(this.judge_total)
-        console.log(effectArr[this.sum])
+        this.judge_total = pointArr[this.sum]
         if (effectArr[this.sum] === 'small') {
           this.scoreClass = 'smallScore'
           this.smallSe.currentTime = 0
@@ -411,7 +432,11 @@ body {
 }
 
 .largeScore {
-  color: red;
+  color: rgb(0, 221, 255);
+}
+
+.total_score {
+  height: 100%;
 }
 
 @media (min-width: 576px) {
