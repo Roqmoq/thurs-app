@@ -4,3 +4,8 @@ out
 *.log*
 .idea
 .vscode
+
+.DS_Store
+src/.DS_Store
+src/renderer/.DS_Store
+src/renderer/src/.DS_Store
